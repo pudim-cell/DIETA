@@ -27,4 +27,39 @@ function adicionarRefeicao() {
 
 function removerRefeicao(botao) {
   botao.parentElement.remove();
+}  
+
+let copos = 0;
+
+function adicionarAgua(){
+
+    copos++;
+
+    document.getElementById('aguaTexto').innerText =
+    `Copos de água: ${copos}`;
+}
+
+function calcularIMC(){
+
+    const peso =
+    parseFloat(document.getElementById('peso').value);
+
+    const altura =
+    parseFloat(document.getElementById('altura').value);
+
+    const resultado =
+    document.getElementById('resultadoIMC');
+
+    if(!peso || !altura){
+
+        resultado.innerText =
+        'Preencha todos os campos';
+
+        return;
+    }
+
+    const imc = peso / (altura * altura);
+
+    resultado.innerText =
+    `IMC: ${imc.toFixed(2)}`;
 }
