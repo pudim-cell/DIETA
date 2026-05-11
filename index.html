@@ -1,264 +1,372 @@
+# Site de Treino com Controle de Dieta
+
+## index.html
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Controle de Dieta</title>
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body{
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      color:white;
-      min-height:100vh;
-      padding:30px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-
-    .container{
-      width:100%;
-      max-width:900px;
-      background:#111827;
-      border-radius:20px;
-      padding:30px;
-      box-shadow:0 0 20px rgba(0,0,0,0.4);
-    }
-
-    h1{
-      text-align:center;
-      margin-bottom:25px;
-      color:#22c55e;
-      font-size:40px;
-    }
-
-    .form{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-      gap:15px;
-      margin-bottom:25px;
-    }
-
-    input{
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      outline:none;
-      background:#1f2937;
-      color:white;
-      font-size:15px;
-    }
-
-    button{
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      background:#22c55e;
-      color:white;
-      font-size:16px;
-      cursor:pointer;
-      transition:0.3s;
-      font-weight:bold;
-    }
-
-    button:hover{
-      background:#16a34a;
-      transform:scale(1.03);
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-      gap:20px;
-      margin-bottom:25px;
-    }
-
-    .card{
-      background:#1f2937;
-      padding:20px;
-      border-radius:15px;
-      text-align:center;
-      box-shadow:0 0 10px rgba(0,0,0,0.2);
-    }
-
-    .card h2{
-      margin-bottom:10px;
-      color:#38bdf8;
-    }
-
-    .card p{
-      font-size:28px;
-      font-weight:bold;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      overflow:hidden;
-      border-radius:15px;
-    }
-
-    th, td{
-      padding:15px;
-      text-align:center;
-    }
-
-    th{
-      background:#22c55e;
-    }
-
-    tr:nth-child(even){
-      background:#1f2937;
-    }
-
-    tr:nth-child(odd){
-      background:#111827;
-    }
-
-    .delete{
-      background:#ef4444;
-      padding:8px 12px;
-      border-radius:8px;
-      border:none;
-      cursor:pointer;
-      color:white;
-      font-weight:bold;
-    }
-
-    .delete:hover{
-      background:#dc2626;
-    }
-
-    @media(max-width:700px){
-      h1{
-        font-size:28px;
-      }
-
-      table{
-        font-size:13px;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitLife - Treino e Dieta</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <div class="container">
+  <header>
+    <h1>🏋️ FitLife</h1>
+    <nav>
+      <a href="#treinos">Treinos</a>
+      <a href="#dieta">Dieta</a>
+      <a href="#progresso">Progresso</a>
+    </nav>
+  </header>
 
-    <h1>🍎 Controle de Dieta</h1>
-
-    <div class="form">
-      <input type="text" id="food" placeholder="Nome do alimento">
-      <input type="number" id="calories" placeholder="Calorias">
-      <input type="number" id="protein" placeholder="Proteínas (g)">
-      <input type="number" id="water" placeholder="Água (ml)">
-      <button onclick="addMeal()">Adicionar</button>
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Transforme seu corpo e sua saúde</h2>
+      <p>Controle seus treinos, refeições e acompanhe sua evolução diária.</p>
+      <button onclick="mostrarMensagem()">Começar Agora</button>
     </div>
+  </section>
+
+  <section id="treinos" class="container">
+    <h2>📅 Plano de Treino</h2>
 
     <div class="cards">
       <div class="card">
-        <h2>Calorias</h2>
-        <p id="totalCalories">0</p>
+        <h3>Segunda - Peito</h3>
+        <ul>
+          <li>Supino reto</li>
+          <li>Supino inclinado</li>
+          <li>Crucifixo</li>
+        </ul>
       </div>
 
       <div class="card">
-        <h2>Proteínas</h2>
-        <p id="totalProtein">0g</p>
+        <h3>Terça - Costas</h3>
+        <ul>
+          <li>Puxada frontal</li>
+          <li>Remada curvada</li>
+          <li>Levantamento terra</li>
+        </ul>
       </div>
 
       <div class="card">
-        <h2>Água</h2>
-        <p id="totalWater">0ml</p>
+        <h3>Quarta - Pernas</h3>
+        <ul>
+          <li>Agachamento</li>
+          <li>Leg press</li>
+          <li>Panturrilha</li>
+        </ul>
       </div>
     </div>
+  </section>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Alimento</th>
-          <th>Calorias</th>
-          <th>Proteínas</th>
-          <th>Água</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
+  <section id="dieta" class="container dieta">
+    <h2>🥗 Controle de Dieta</h2>
 
-      <tbody id="mealTable">
-      </tbody>
-    </table>
+    <div class="dieta-box">
+      <input type="text" id="refeicao" placeholder="Digite uma refeição" />
+      <button onclick="adicionarRefeicao()">Adicionar</button>
+    </div>
 
-  </div>
+    <ul id="listaRefeicoes"></ul>
+  </section>
 
-  <script>
-    let totalCalories = 0;
-    let totalProtein = 0;
-    let totalWater = 0;
+  <section id="progresso" class="container">
+    <h2>📈 Seu Progresso</h2>
 
-    function addMeal(){
+    <div class="progresso-grid">
+      <div class="progress-card">
+        <h3>Peso Atual</h3>
+        <p>78kg</p>
+      </div>
 
-      const food = document.getElementById("food").value;
-      const calories = Number(document.getElementById("calories").value);
-      const protein = Number(document.getElementById("protein").value);
-      const water = Number(document.getElementById("water").value);
+      <div class="progress-card">
+        <h3>Meta</h3>
+        <p>70kg</p>
+      </div>
 
-      if(food === "" || calories <= 0){
-        alert("Preencha os dados corretamente!");
-        return;
-      }
+      <div class="progress-card">
+        <h3>Treinos Semanais</h3>
+        <p>5x</p>
+      </div>
+    </div>
+  </section>
 
-      totalCalories += calories;
-      totalProtein += protein;
-      totalWater += water;
+  <footer>
+    <p>© 2026 FitLife - Todos os direitos reservados.</p>
+  </footer>
 
-      updateCards();
-
-      const table = document.getElementById("mealTable");
-
-      const row = table.insertRow();
-
-      row.innerHTML = `
-        <td>${food}</td>
-        <td>${calories}</td>
-        <td>${protein}g</td>
-        <td>${water}ml</td>
-        <td>
-          <button class="delete" onclick="removeMeal(this, ${calories}, ${protein}, ${water})">
-            Excluir
-          </button>
-        </td>
-      `;
-
-      document.getElementById("food").value = "";
-      document.getElementById("calories").value = "";
-      document.getElementById("protein").value = "";
-      document.getElementById("water").value = "";
-    }
-
-    function removeMeal(button, calories, protein, water){
-
-      totalCalories -= calories;
-      totalProtein -= protein;
-      totalWater -= water;
-
-      updateCards();
-
-      const row = button.parentElement.parentElement;
-      row.remove();
-    }
-
-    function updateCards(){
-      document.getElementById("totalCalories").innerText = totalCalories;
-      document.getElementById("totalProtein").innerText = totalProtein + "g";
-      document.getElementById("totalWater").innerText = totalWater + "ml";
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
+```
+
+---
+
+## style.css
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: white;
+}
+
+header {
+  background: #111827;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  color: #22c55e;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #22c55e;
+}
+
+.hero {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+  url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1600&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-text h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: #22c55e;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #16a34a;
+  transform: scale(1.05);
+}
+
+.container {
+  padding: 60px 10%;
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  color: #22c55e;
+}
+
+.card ul li {
+  margin-bottom: 10px;
+}
+
+.dieta-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.dieta-box input {
+  padding: 12px;
+  width: 300px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+#listaRefeicoes {
+  max-width: 600px;
+  margin: auto;
+  list-style: none;
+}
+
+#listaRefeicoes li {
+  background: #1e293b;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remover {
+  background: crimson;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.progresso-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.progress-card {
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.progress-card h3 {
+  color: #22c55e;
+  margin-bottom: 10px;
+}
+
+.progress-card p {
+  font-size: 2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111827;
+  margin-top: 40px;
+}
+
+@media(max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-text h2 {
+    font-size: 2rem;
+  }
+
+  .dieta-box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dieta-box input {
+    width: 100%;
+  }
+}
+```
+
+---
+
+## script.js
+
+```javascript
+function mostrarMensagem() {
+  alert('Bem-vindo ao FitLife! Bora treinar 💪');
+}
+
+function adicionarRefeicao() {
+  const input = document.getElementById('refeicao');
+  const lista = document.getElementById('listaRefeicoes');
+
+  if (input.value.trim() === '') {
+    alert('Digite uma refeição!');
+    return;
+  }
+
+  const item = document.createElement('li');
+
+  item.innerHTML = `
+    ${input.value}
+    <button class="remover" onclick="removerRefeicao(this)">
+      Remover
+    </button>
+  `;
+
+  lista.appendChild(item);
+
+  input.value = '';
+}
+
+function removerRefeicao(botao) {
+  botao.parentElement.remove();
+}
+```
+
+---
+
+## Como usar
+
+1. Crie uma pasta chamada `fitlife`
+2. Dentro dela crie:
+
+   * `index.html`
+   * `style.css`
+   * `script.js`
+3. Cole cada código no arquivo correspondente.
+4. Abra o `index.html` no navegador.
+
+---
+
+## Recursos do site
+
+✅ Layout moderno
+✅ Controle de refeições
+✅ Plano de treino
+✅ Design responsivo
+✅ Animações suaves
+✅ Visual profissional
+✅ Compatível com celular
